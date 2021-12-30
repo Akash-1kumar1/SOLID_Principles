@@ -10,3 +10,63 @@ SOLID stands for:
 * Interface Segregation Principle
 * Dependency Inversion Principle
 
+#### Single Responsibility Principle
+The Single Responsibility Principle states that a class should have only one primary responsibility and should not take other responsibilities. Robert C. Martin explains this as “A class should have only one reason to change”
+
+```python
+class Shopping:
+    def __init__(self):
+        pass
+    def viewItems(self):
+        pass
+# only Responsibility to add into cart
+class AddToCart:
+    def addToCart(self, item):
+        pass
+# only Responsibility to view items in cart 
+class ViewCart:
+    def viewCartItems(self, cart_items: Cart):
+        pass
+```
+
+### Open Closed Principle
+Open Closed Principle was first conceptualized by Berterd Meyer in 1988. Robert C. Martin mentioned this as “the most important principle of object-oriented design”. Open Closed Principle states that “Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.”
+
+### Liskov Substitution Principle
+Liskov Substitution Principle was one of the toughest principles for me to understand and I had to look at various examples on the internet to understand it correctly. But I feel that once understood properly, it is one of the easiest principles to adhere to while designing Object-Oriented Applications.
+
+Liskov Substitution Principle states that "Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program."
+
+```python
+from abc import ABC, abstractmethod
+class Discount(ABC):
+    def __init__(self, customer):
+        self.customer = customer
+        self.discount = 1   
+    @abstractmethod
+    def set_discount(self, price, no_Of_items):
+        pass
+    def get_discount(self):
+        pass
+    
+class RegularDiscount(Discount):
+    def set_discount(self, price, no_Of_items):
+        if no_Of_items >= 5:
+            self.discount = price * 0.7
+        else:
+            self.discount = price * 0.9
+    def get_discount(self):
+        return self.discount
+class GreatIndianFestival(Discount):
+    def set_discount(self, price, no_Of_items):
+        if no_Of_items >= 5:
+            self.discount = price * 0.6
+        else:
+            self.discount = price * 0.8
+    def get_discount(self):
+        return self.discount
+```
+Above example satisfes Open Closed Principle, Liskov Substitution Principle and Dependency Inversion Principle also.
+
+### Interface Segregation Principle
+The Interface Segregation Principle states that “No client should be forced to depend on methods it does not use”. The Interface Segregation Principle was introduced by Robert C Martin while he was consulting for Xerox. The Interface Segregation Principle suggests creating smaller interfaces known as “role interfaces” instead of a large interface consisting of multiple methods. By segregating the role-based methods into smaller role interfaces, the clients would depend only on the methods that are relevant to it.
