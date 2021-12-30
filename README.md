@@ -48,25 +48,50 @@ class Discount(ABC):
         pass
     def get_discount(self):
         pass
-    
+ 
 class RegularDiscount(Discount):
     def set_discount(self, price, no_Of_items):
-        if no_Of_items >= 5:
-            self.discount = price * 0.7
-        else:
-            self.discount = price * 0.9
+        pass
     def get_discount(self):
         return self.discount
+
 class GreatIndianFestival(Discount):
     def set_discount(self, price, no_Of_items):
-        if no_Of_items >= 5:
-            self.discount = price * 0.6
-        else:
-            self.discount = price * 0.8
+        pass
     def get_discount(self):
         return self.discount
 ```
+If your code follows the Open-Closed Principle and Liskov Substitution Principle, then it will be implicitly aligned to be compliant to the Dependency Inversion Principle also.
 Above example satisfes Open Closed Principle, Liskov Substitution Principle and Dependency Inversion Principle also.
 
 ### Interface Segregation Principle
 The Interface Segregation Principle states that “No client should be forced to depend on methods it does not use”. The Interface Segregation Principle was introduced by Robert C Martin while he was consulting for Xerox. The Interface Segregation Principle suggests creating smaller interfaces known as “role interfaces” instead of a large interface consisting of multiple methods. By segregating the role-based methods into smaller role interfaces, the clients would depend only on the methods that are relevant to it.
+
+
+```python
+# The Interface Segregation Principle (ISP)
+class BuyUsingMoney(ABC):
+  @abstractmethod
+  def useMoney():
+    pass
+
+class BuyUsingSuperCoin(ABC):
+  @abstractmethod
+  def useSuperCoin():
+    pass
+
+class RegularStore(BuyUsingMoney, BuyUsingSuperCoin):
+  def useMoney(self):
+    pass
+  def useSuperCoin(self):
+    pass 
+
+class OneRsStore(BuyUsingSuperCoin):
+  def useSuperCoin(self):
+    pass 
+```
+
+## Dependency Inversion Principle
+The Dependency Inversion Principle states that:
+- a). High level module should not depend on low level modules. Both should depend on abstractions
+- b). Abstractions should not depend on details. Details should depend on abstractions.
