@@ -101,3 +101,4 @@ DIP decouples high and low-level components and instead connects both to abstrac
 
 The advantage of this part of DIP is that decoupled programs require less work to change. Webs of dependencies across your program mean that a single change can affect many separate parts.
 
+[SOLID.docx](https://github.com/Akash-1kumar1/SOLID_Principles/files/7835230/SOLID.docx)
