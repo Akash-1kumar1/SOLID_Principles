@@ -95,3 +95,9 @@ class OneRsStore(BuyUsingSuperCoin):
 The Dependency Inversion Principle states that:
 - a). High level module should not depend on low level modules. Both should depend on abstractions
 - b). Abstractions should not depend on details. Details should depend on abstractions.
+The first part of this principle reverses traditional OOP software design. Without DIP, programmers often construct programs to have high-level (less detail, more abstract) components explicitly connected with low-level (specific) components to complete tasks.
+
+DIP decouples high and low-level components and instead connects both to abstractions. High and low-level components can still benefit from each other, but a change in one should not directly break the other.
+
+The advantage of this part of DIP is that decoupled programs require less work to change. Webs of dependencies across your program mean that a single change can affect many separate parts.
+
